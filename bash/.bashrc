@@ -15,6 +15,8 @@ alias tb='nc termbin.com 9999'
 alias wp-city='feh --recursive --random --bg-fill ~/Pictures/Wallpaper/City'
 alias wp-tech='feh --recursive --random --bg-fill ~/Pictures/Wallpaper/Technology'
 alias wp-nature='feh --recursive --random --bg-fill ~/Pictures/Wallpaper/Nature'
+alias wp-fantasy='feh --recursive --random --bg-fill ~/images/Fantasy'
+
 
 # xclip
 alias pbcopy='xclip -selection clipboard' 	# copy to clipboard, ctrl+c, ctrl+shift+c
