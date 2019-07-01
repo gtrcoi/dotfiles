@@ -9,7 +9,7 @@ PS1='[\u@\h \W]\$ '
 
 alias cls='clear'
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dotstows/.git --work-tree=$HOME/dotstows'
 # alias dotfiles-update ='$HOME/.scripts/dotfiles-update.sh'
 alias tb='nc termbin.com 9999'
 alias wp-city='feh --recursive --random --bg-fill ~/Pictures/Wallpaper/City'
