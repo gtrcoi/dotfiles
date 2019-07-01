@@ -3,4 +3,4 @@
 xset +fp ~/.local/share/fonts/
 
 exec i3
-
+exec nm-applet
