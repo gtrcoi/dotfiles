@@ -32,12 +32,4 @@ c() {
 }
 alias cd="c"
 
-dfu() {
-	#dotfileGit='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
-
-	dotfiles commit -a -m $1 -v
-	dotfiles push -u -v dotfiles Linux
-}
-alias dfup="dfu"
-
 eval "`dircolors /etc/DIR_COLORS`"
