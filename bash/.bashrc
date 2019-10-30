@@ -40,3 +40,4 @@ dfu() {
 }
 alias dfup="dfu"
 
+eval "`dircolors /etc/DIR_COLORS`"
