@@ -3,12 +3,12 @@
 Stow implementation of rice config.
 
 Dependencies in .pkgdeps.
+___
+## To install stow package  
+`cd dotfiles`  
+`stow -t ~/ [package]`
 
-# To install stow package
-cd dotstows
-stow -t ~/ [package]
-
-# To add files to stow package
-Move file to stow directory then restow file: 
-stow -R [package]
+## To add files to stow package  
+Move file to stow directory then restow file:  
+`stow -R [package]`
 
