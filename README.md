@@ -8,7 +8,7 @@ ___
 ### To add files to stow package  
 Move file to `dotfiles/[package]/` directory then restow file:  
 `stow -R [package]`
-
+___
 ### Additional info
 Dependencies listed in .pkgdeps.  
 To install with pacman use:  
