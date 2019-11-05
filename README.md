@@ -1,15 +1,15 @@
-# Dotfiles
-
-Stow implementation of rice config.
-
-Dependencies in .pkgdeps. to install with pacman use  
-`pacman -S - < .pkgdeps`
+# Dotfiles  
+Stow implementation of dotfiles.
 ___
-## To install stow package  
+### To install stow package  
 `cd dotfiles`  
 `stow -t ~/ [package]`
 
-## To add files to stow package  
+### To add files to stow package  
 Move file to `dotfiles/[package]/` directory then restow file:  
 `stow -R [package]`
 
+### Additional info
+Dependencies listed in .pkgdeps.  
+To install with pacman use:  
+`pacman -S - < .pkgdeps`
