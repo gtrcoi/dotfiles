@@ -18,10 +18,10 @@ PS1='[\u@\h \W]\$ '
 # functions
 
 # custom cd
-c() {
+showDirectoryOnChange() {
 	cd $1;
-	ls;
+	l;
 }
-alias cd="c"
+alias cd="showDirectoryOnChange"
 
 eval "`dircolors /etc/DIR_COLORS`"
