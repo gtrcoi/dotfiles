@@ -2,7 +2,8 @@
 
 Stow implementation of rice config.
 
-Dependencies in .pkgdeps.
+Dependencies in .pkgdeps. to install with pacman use  
+`pacman -S - < .pkgdeps`
 ___
 ## To install stow package  
 `cd dotfiles`  
