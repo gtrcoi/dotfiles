@@ -4,6 +4,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Add to Path
+# Add .scripts
+NPATH="$HOME/.scripts"
+
+case ":${PATH}:" in
+  *${NPATH}:*) ;;
+  *) PATH=$NPATH:${PATH} ;;
+esac
+
+# Save globally
+export PATH
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
