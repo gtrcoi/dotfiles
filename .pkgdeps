@@ -7,6 +7,7 @@ alsa-lib
 alsa-plugins
 alsa-utils
 aom
+apparmor
 arandr
 archlinux-keyring
 argon2
@@ -40,7 +41,6 @@ cantarell-fonts
 cdparanoia
 cifs-utils
 colord
-compton
 confuse
 coreutils
 cracklib
@@ -106,6 +106,8 @@ glslang
 gmp
 gnupg
 gnutls
+go
+go-tools
 gobject-introspection-runtime
 goocanvas
 gpgme
@@ -163,6 +165,7 @@ java-runtime-common
 jbig2dec
 jdk11-openjdk
 jfsutils
+jitterentropy
 jre10-openjdk
 jre10-openjdk-headless
 jre11-openjdk
@@ -423,6 +426,7 @@ libnotify
 libnsl
 libogg
 libomxil-bellagio
+libp11
 libpaper
 libpcap
 libpciaccess
@@ -614,6 +618,7 @@ perl-timedate
 perl-try-tiny
 phonon-qt5
 phonon-qt5-gstreamer
+picom
 pinentry
 pixman
 pkgconf
@@ -627,6 +632,7 @@ psmisc
 pygobject-devel
 python
 python-cairo
+python-docutils
 python-gobject
 qpdf
 qt5-base
@@ -639,6 +645,7 @@ ranger
 readline
 reiserfsprogs
 rest
+rng-tools
 run-parts
 s-nail
 samba
@@ -651,6 +658,7 @@ shared-mime-info
 signal-cli
 slang
 smbclient
+snapd
 solid
 sonnet
 sound-theme-freedesktop
@@ -658,6 +666,7 @@ speex
 speexdsp
 spirv-tools
 sqlite
+squashfs-tools
 startup-notification
 steam
 stow
