@@ -21,6 +21,11 @@ set wildmenu
 " Plugin manager
 call plug#begin('~/.vim/plugged')
 
+Plug 'dylanaraps/wal.vim'
+
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'KabbAmine/vCoolor.vim'
+
 call plug#end()
+
+colorscheme wal
