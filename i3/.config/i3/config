@@ -1,4 +1,4 @@
-# color palette 
+# color palette
   set $base00 #101218
   set $base01 #1f222d
   set $base02 #13151c
@@ -210,3 +210,6 @@ hide_edge_borders both
 gaps inner 12
 gaps outer -4
 smart_gaps on
+
+# Application Settings
+for_window [class="Anydesk" instance="anydesk"] floating enable resize set 640 480
