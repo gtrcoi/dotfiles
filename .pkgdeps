@@ -6,6 +6,7 @@ adwaita-icon-theme
 alsa-lib
 alsa-plugins
 alsa-utils
+anydesk
 aom
 apparmor
 arandr
@@ -95,6 +96,7 @@ gd
 gdbm
 gdk-pixbuf2
 gettext
+giblib
 giflib
 girara
 git
@@ -103,6 +105,7 @@ glib-perl
 glib2
 glibc
 glslang
+glu
 gmp
 gnupg
 gnutls
@@ -128,6 +131,7 @@ gstreamer
 gtk-update-icon-cache
 gtk2
 gtk3
+gtkglext
 guile
 gvim
 gzip
@@ -149,6 +153,7 @@ icu
 ijs
 illum-git
 imagemagick
+imgur-screenshot-git
 imlib2
 inetutils
 iniparser
@@ -193,6 +198,8 @@ kiconthemes
 kinit
 kio
 kitemviews
+kitty
+kitty-terminfo
 kjobwidgets
 kmod
 knewstuff
@@ -574,6 +581,7 @@ pacman-mirrorlist
 pam
 pambase
 pango
+pangox-compat
 parted
 patch
 pciutils
@@ -631,9 +639,17 @@ procps-ng
 psmisc
 pygobject-devel
 python
+python-appdirs
 python-cairo
 python-docutils
 python-gobject
+python-ordered-set
+python-packaging
+python-pyparsing
+python-pywal
+python-setuptools
+python-shiboken2
+python-six
 qpdf
 qt5-base
 qt5-declarative
@@ -650,6 +666,7 @@ run-parts
 s-nail
 samba
 sane
+scrot
 sdl2
 sed
 shaderc
@@ -667,6 +684,7 @@ speexdsp
 spirv-tools
 sqlite
 squashfs-tools
+st-luke-git
 startup-notification
 steam
 stow
@@ -704,6 +722,7 @@ w3m
 wayland
 wayland-protocols
 webkit2gtk
+wget
 which
 whois
 woff2
