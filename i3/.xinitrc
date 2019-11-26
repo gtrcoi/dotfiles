@@ -43,3 +43,5 @@ xset +fp ~/.local/share/fonts/
 exec i3
 exec nm-applet
 
+# -R restores the last colorscheme that was in use.
+wal -R
