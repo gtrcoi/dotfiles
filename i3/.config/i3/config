@@ -206,8 +206,10 @@ hide_edge_borders both
       urgent_workspace $base08 $base08 $base07
     }
 }
-
-gaps inner 12
+# Gaps config
+# You can also use any non-zero value if you'd like to have a border
+for_window [class=".*"] border pixel 0
+gaps inner 10
 gaps outer -4
 smart_gaps on
 
