@@ -174,7 +174,8 @@ bindsym $mod+r mode "resize"
 #exec xrandr --output VGA-1 --primary --mode 1280x720 --pos 0x0 --rotate normal
 exec_always feh --bg-fill --no-fehbg -z -r ~/images
 exec compton 
-exec st
+exec kitty
+exec nm-applet
 
 #volume
 bindsym XF86AudioMute exec amixer set Master toggle;  exec pkill  -RTMIN+10 i3blocks
@@ -226,4 +227,5 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 #
 # PROTIP: You can also dynamically set dmenu's colors this way:
-bindsym $mod+d exec dmenu_run -nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
+bindsym $mod+d exec dmenu_run 
+#-nb "$fg" -nf "$bg" -sb "$bg" -sf "$fg"
