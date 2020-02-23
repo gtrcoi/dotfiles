@@ -11,5 +11,10 @@ Move file to `dotfiles/[package]/` directory then restow file:
 ___
 ### Additional info
 Dependencies listed in .pkgdeps.  
-To install with pacman use:  
-`pacman -S - < .pkgdeps`
+To install with pacman use:
+
+`pacman -S --needed - < .pkgdeps`
+
+OR
+
+`pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort .pkgdeps))`
