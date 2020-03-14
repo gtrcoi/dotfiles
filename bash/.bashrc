@@ -23,6 +23,9 @@ export PATH
 if [ -f ~/.bash_aliases ]; then
 	    . ~/.bash_aliases
 fi
+if [ -f ~/.aliasrc ]; then
+	.~.aliasrc
+fi
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
