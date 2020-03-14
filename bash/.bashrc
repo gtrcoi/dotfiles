@@ -24,7 +24,7 @@ if [ -f ~/.bash_aliases ]; then
 	    . ~/.bash_aliases
 fi
 if [ -f ~/.aliasrc ]; then
-	.~.aliasrc
+	. ~.aliasrc
 fi
 
 alias ls='ls --color=auto'
