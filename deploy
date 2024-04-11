@@ -1,0 +1,114 @@
+#!/bin/bash
+
+init=0
+copy=0
+force=0
+deploy_args="s"
+
+shopt -s nullglob
+dir_array=(*/)
+shopt -u nullglob
+
+Help()
+{
+	# Display Help
+	echo "Deploy script will deploy config files according to their respective deployment scripts with either symlink or copy."
+	echo
+	echo "Syntax: deploy [options] [args]"
+	echo "options:"
+	echo "h     Print this Help."
+	echo "l     List available package configs."
+	echo "c     Copy files instead of using symlinks."
+	echo "i     Initialize dir name [arg] with script template."
+	echo "f     Force files to replace existing."
+	echo
+}
+
+List()
+{
+	for dir in "${dir_array[@]}"; do
+		echo $dir
+	done
+}
+
+Init()
+{
+	if [ "${#args_array[@]}" -eq 0 ]; then
+		echo "no args"
+		exit 1
+	fi
+	for arg in "${args_array[@]}"; do
+	if ! [ -d ./$arg ] ; then
+		mkdir ./$arg
+	fi
+		cp $deploy_args ./init ./$arg/deploy
+	done
+}
+
+Deploy()
+{
+	if [ "${#args_array[@]}" -gt 0 ]; then
+		dir_array=("${args_array[@]}")
+	fi
+
+	for dir in "${dir_array[@]}"; do
+		deploy_dir="./$dir/deploy"
+		if [ -e $deploy_dir ] ; then
+			source $deploy_dir $deploy_args
+		else
+			echo "$dir deployment missing."
+		fi
+	done
+}
+
+#########################
+# Arguments and options
+#########################
+while getopts ":hlcif" flag
+do
+	case "$flag" in
+		h)
+			Help 
+			exit;;
+		l) 
+			List
+			exit;;
+		c) 
+			copy=1;;
+		i)
+			init=1;;
+		f)
+		        force=1;;
+		\?) 
+			echo "$0: Error: Invalid option: -${OPTARG}" >&2; 
+			exit 1;;
+	esac
+done
+shift $((OPTIND - 1))
+args_array=("$@")
+
+##########################
+# Construct $deploy_args
+##########################
+if [ ${init} -eq 1 ] || [ ${copy} -eq 1 ] ; then 
+	deploy_args=""
+fi
+if [ ${force} -eq 1 ]; then
+	deploy_args="${deploy_args}f"
+fi
+deploy_args="-${deploy_args}"
+
+if [ ${#deploy_args} -eq 1 ] ; then
+	deploy_args=""
+fi
+# echo "deploy args: ${deploy_args}"
+
+#############
+# Go Button
+#############
+if [ ${init} -eq 1 ] ; then
+	Init
+	exit
+fi
+
+#Deploy
