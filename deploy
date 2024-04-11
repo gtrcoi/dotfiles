@@ -40,7 +40,7 @@ Init()
 	if ! [ -d ./$arg ] ; then
 		mkdir ./$arg
 	fi
-		cp $deploy_args ./init ./$arg/deploy
+		cp $deploy_args ./template ./$arg/deploy
 	done
 }
 
