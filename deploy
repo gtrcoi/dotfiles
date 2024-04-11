@@ -3,7 +3,6 @@
 init=0
 copy=0
 force=0
-deploy_args="s"
 
 shopt -s nullglob
 dir_array=(*/)
@@ -90,6 +89,7 @@ args_array=("$@")
 ##########################
 # Construct $deploy_args
 ##########################
+deploy_args="s"
 if [ ${init} -eq 1 ] || [ ${copy} -eq 1 ] ; then 
 	deploy_args=""
 fi
@@ -101,13 +101,13 @@ deploy_args="-${deploy_args}"
 if [ ${#deploy_args} -eq 1 ] ; then
 	deploy_args=""
 fi
-# echo "deploy args: ${deploy_args}"
+ echo "deploy args: ${deploy_args}"
 
 #############
 # Go Button
 #############
 if [ ${init} -eq 1 ] ; then
-	Init
+#	Init
 	exit
 fi
 
