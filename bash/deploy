@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+symlink=0
+force=0
+
+#########################
+# Arguments and options
+#########################
+while getopts ":sf" flag
+do
+	case "$flag" in
+		s)
+			symlink=1;;
+		f)
+		        force=1;;
+		\?) 
+			echo "$0: Error: Invalid option: -${OPTARG}" >&2; 
+			exit 1;;
+	esac
+done
+shift $((OPTIND - 1))
+args_array=("$@")
+
+###############
+# Deploy Args
+###############
+deploy_args=""
+if [ ${symlink} -eq 1 ] ; then 
+	deploy_args="s"
+fi
+if [ ${force} -eq 1 ]; then
+	deploy_args="${deploy_args}f"
+fi
+deploy_args="-${deploy_args}"
+
+if [ ${#deploy_args} -eq 1 ] ; then
+	deploy_args=""
+fi
+ echo "deploy args: ${deploy_args}"
+
+######################
+# Deploy directories
+######################
+dir_array=(
+	/path/to/dir/,
+	/path/to/dir/
+	(
+for dir in "${dir_array[@]}" ; do
+	echo $dir
+	if [ -e $dir ] ; then
+		echo "dir exists"
+		continue
+	fi
+#	mkdir -p $dir
+done
+
+################
+# Deploy files
+################
+cp $deploy_args
+cp $deploy_args
+cp $deploy_args
+cp $deploy_args
+cp $deploy_args
+cp $deploy_args
