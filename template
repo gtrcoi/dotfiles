@@ -21,6 +21,17 @@ done
 shift $((OPTIND - 1))
 args_array=("$@")
 
+#################
+# Install stats
+#################
+# apt-cache policy <package-name>
+# dpkg -l | grep -E '^ii | grep <package-name>
+# which <package-name>
+# test -e /usr/bin/<package-name>
+# test -e /opt/???/<package-name>
+# test -e /bin/<package-name>
+# test -d $HOME/.var/app/<flatpak-ref>
+
 ###############
 # Deploy Args
 ###############
