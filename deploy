@@ -36,10 +36,15 @@ Init()
 		echo "no args"
 		exit 1
 	fi
+	
 	for arg in "${args_array[@]}"; do
-	if ! [ -d ./$arg ] ; then
-		mkdir ./$arg
-	fi
+		echo "Initializing: $arg"
+		if ! [ -d ./$arg ] ; then
+			echo "Creating $arg directory"
+			mkdir ./$arg
+		fi
+
+		echo "Copying template -> $arg/deply"
 		cp $deploy_args ./template ./$arg/deploy
 	done
 }
@@ -51,6 +56,7 @@ Deploy()
 	fi
 
 	for dir in "${dir_array[@]}"; do
+		echo "Deploying: $dir"
 		deploy_dir="./$dir/deploy"
 		if [ -e $deploy_dir ] ; then
 			source $deploy_dir $deploy_args
@@ -77,7 +83,7 @@ do
 		i)
 			init=1;;
 		f)
-		        force=1;;
+			force=1;;
 		\?) 
 			echo "$0: Error: Invalid option: -${OPTARG}" >&2; 
 			exit 1;;
@@ -101,14 +107,14 @@ deploy_args="-${deploy_args}"
 if [ ${#deploy_args} -eq 1 ] ; then
 	deploy_args=""
 fi
- echo "deploy args: ${deploy_args}"
+#echo "deploy args: ${deploy_args}"
 
 #############
 # Go Button
 #############
 if [ ${init} -eq 1 ] ; then
-#	Init
+	Init
 	exit
 fi
 
-#Deploy
+Deploy
