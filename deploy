@@ -45,7 +45,7 @@ Init()
 		fi
 
 		echo "Copying template -> $arg/deply"
-		cp $deploy_args ./template ./$arg/deploy
+		cp $cp_args ./template ./$arg/deploy
 	done
 }
 
@@ -59,7 +59,7 @@ Deploy()
 		echo "Deploying: $dir"
 		deploy_dir="./$dir/deploy"
 		if [ -e $deploy_dir ] ; then
-			source $deploy_dir $deploy_args
+			source $deploy_dir $cp_args
 		else
 			echo "$dir deployment missing."
 		fi
@@ -93,21 +93,21 @@ shift $((OPTIND - 1))
 args_array=("$@")
 
 ##########################
-# Construct $deploy_args
+# Construct $cp_args
 ##########################
-deploy_args="s"
+cp_args="s"
 if [ ${init} -eq 1 ] || [ ${copy} -eq 1 ] ; then 
-	deploy_args=""
+	cp_args=""
 fi
 if [ ${force} -eq 1 ]; then
-	deploy_args="${deploy_args}f"
+	cp_args="${cp_args}f"
 fi
-deploy_args="-${deploy_args}"
+cp_args="-${cp_args}"
 
-if [ ${#deploy_args} -eq 1 ] ; then
-	deploy_args=""
+if [ ${#cp_args} -eq 1 ] ; then
+	cp_args=""
 fi
-#echo "deploy args: ${deploy_args}"
+#echo "cp args: ${cp_args}"
 
 #############
 # Go Button
