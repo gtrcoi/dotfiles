@@ -28,4 +28,4 @@ done
 ################
 # Deploy files
 ################
-cp $deploy_args
+cp $cp_args
