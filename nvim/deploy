@@ -1,42 +1,13 @@
-#!/usr/bin/env bash
-
-symlink=0
-force=0
-
-#########################
-# Arguments and options
-#########################
-while getopts ":sf" flag
-do
-	case "$flag" in
-		s)
-			symlink=1;;
-		f)
-		        force=1;;
-		\?) 
-			echo "$0: Error: Invalid option: -${OPTARG}" >&2; 
-			exit 1;;
-	esac
-done
-shift $((OPTIND - 1))
-args_array=("$@")
-
-###############
-# Deploy Args
-###############
-deploy_args=""
-if [ ${symlink} -eq 1 ] ; then 
-	deploy_args="s"
-fi
-if [ ${force} -eq 1 ]; then
-	deploy_args="${deploy_args}f"
-fi
-deploy_args="-${deploy_args}"
-
-if [ ${#deploy_args} -eq 1 ] ; then
-	deploy_args=""
-fi
- echo "deploy args: ${deploy_args}"
+#################
+# Install stats
+#################
+# apt-cache policy <package-name>
+# dpkg -l | grep -E '^ii | grep <package-name>
+# which <package-name>
+# test -e /usr/bin/<package-name>
+# test -e /opt/???/<package-name>
+# test -e /bin/<package-name>
+# test -d $HOME/.var/app/<flatpak-ref>
 
 ######################
 # Deploy directories
@@ -57,9 +28,4 @@ done
 ################
 # Deploy files
 ################
-cp $deploy_args
-cp $deploy_args
-cp $deploy_args
-cp $deploy_args
-cp $deploy_args
 cp $deploy_args
