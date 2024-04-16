@@ -3,6 +3,7 @@
 init=0
 copy=0
 force=0
+script_name=$(basename "$0")
 
 shopt -s nullglob
 dir_array=(*/)
@@ -16,9 +17,9 @@ fi
 Help()
 {
 	# Display Help
-	echo "Deploy script will deploy config files according to their respective deployment scripts with either symlink or copy."
+	echo "$script_name script will deploy config files according to their respective deployment scripts with either symlink or copy."
 	echo
-	echo "Syntax: deploy [options] [args]"
+	echo "Syntax: deploy [options] [arg]"
 	echo "options:"
 	echo "h     Print this Help."
 	echo "l     List available package configs."
@@ -39,7 +40,7 @@ List()
 Init()
 {
 	if [ "${#args_array[@]}" -eq 0 ]; then
-		echo "no args"
+		echo "Init requires arg. Run $script_name -h for more details."
 		exit 1
 	fi
 
