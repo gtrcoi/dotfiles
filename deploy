@@ -8,6 +8,11 @@ shopt -s nullglob
 dir_array=(*/)
 shopt -u nullglob
 
+if [ -n "${SUDO_USER}" ]; then
+	HOME="/home/$SUDO_USER"
+	# TO DO: scan all scripts for used env's and replace them
+fi
+
 Help()
 {
 	# Display Help
@@ -37,7 +42,7 @@ Init()
 		echo "no args"
 		exit 1
 	fi
-	
+
 	for arg in "${args_array[@]}"; do
 		echo "Initializing: $arg"
 		if ! [ -d ./$arg ] ; then
