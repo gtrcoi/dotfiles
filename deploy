@@ -20,6 +20,7 @@ Help()
 	echo "c     Copy files instead of using symlinks."
 	echo "i     Initialize dir name [arg] with script template."
 	echo "f     Force files to replace existing."
+	echo "x     Debug mode."
 	echo
 }
 
@@ -84,6 +85,8 @@ do
 			init=1;;
 		f)
 			force=1;;
+		x)
+			set -x;;
 		\?) 
 			echo "$0: Error: Invalid option: -${OPTARG}" >&2; 
 			exit 1;;
