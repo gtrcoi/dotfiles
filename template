@@ -12,20 +12,20 @@
 ######################
 # Deploy directories
 ######################
-dir_array=(
-	/path/to/dir/,
-	/path/to/dir/
+target_paths=(
+	$HOME/.config,
+	$HOME/.config
 	(
-for dir in "${dir_array[@]}" ; do
-	echo $dir
-	if [ -e $dir ] ; then
-		echo "dir exists"
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
 		continue
 	fi
-#	mkdir -p $dir
+#	mkdir -p $target_path
 done
 
 ################
 # Deploy files
 ################
-cp $cp_args
+#cp $cp_args ${local_path}/file.conf ${HOME}/.config/.../

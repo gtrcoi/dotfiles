@@ -6,7 +6,7 @@ force=0
 script_name=$(basename "$0")
 
 shopt -s nullglob
-dir_array=(*/)
+local_paths=($(realpath -e */))
 shopt -u nullglob
 
 if [ -n "${SUDO_USER}" ]; then
@@ -32,25 +32,25 @@ Help()
 
 List()
 {
-	for dir in "${dir_array[@]}"; do
-		echo $dir
+	for local_path in "${local_paths[@]}"; do
+		echo "$(basename $local_path)"
 	done
 }
 
 Init()
 {
-	if [ "${#args_array[@]}" -eq 0 ]; then
+	if [ "${#script_args[@]}" -eq 0 ]; then
 		echo "Init requires arg. Run $script_name -h for more details."
 		exit 1
 	fi
 
-	for arg in "${args_array[@]}"; do
+	for arg in "${script_args[@]}"; do
 		echo "Initializing: $arg"
 		if ! [ -d ./$arg ] ; then
 			echo "Creating $arg directory"
 			mkdir ./$arg
 		fi
-
+		#if [ -e ./$arg/deploy ] && [ ${force} -eq 0 ] ; then
 		echo "Copying template -> $arg/deply"
 		cp $cp_args ./template ./$arg/deploy
 	done
@@ -58,17 +58,16 @@ Init()
 
 Deploy()
 {
-	if [ "${#args_array[@]}" -gt 0 ]; then
-		dir_array=("${args_array[@]}")
+	if [ "${#script_args[@]}" -gt 0 ]; then
+		local_paths=( $(realpath -e "${script_args[@]}") )
 	fi
 
-	for dir in "${dir_array[@]}"; do
+	for local_path in "${local_paths[@]}"; do
 		echo "Deploying: $dir"
-		deploy_dir="./$dir/deploy"
-		if [ -e $deploy_dir ] ; then
-			source $deploy_dir $cp_args
+		if [ -e "${local_path}/deploy" ] ; then
+			source "${local_path}/deploy"
 		else
-			echo "$dir deployment missing."
+			echo "(basename $local_path) deployment missing."
 		fi
 	done
 }
@@ -99,7 +98,7 @@ do
 	esac
 done
 shift $((OPTIND - 1))
-args_array=("$@")
+script_args=("$@")
 
 ##########################
 # Construct $cp_args
