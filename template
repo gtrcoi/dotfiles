@@ -28,4 +28,4 @@ done
 ################
 # Deploy files
 ################
-#cp $cp_args ${local_path}/file.conf ${HOME}/.config/.../
+#cp $cp_args "$local_path/file.conf" "$HOME/.config/.../"
