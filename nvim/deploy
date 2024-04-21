@@ -1,4 +1,5 @@
-#################
+#!/bin/bash
+##################
 # Install stats
 #################
 # apt-cache policy <package-name>
@@ -7,25 +8,30 @@
 # test -e /usr/bin/<package-name>
 # test -e /opt/???/<package-name>
 # test -e /bin/<package-name>
-# test -d $HOME/.var/app/<flatpak-ref>
+
 
 ######################
 # Deploy directories
 ######################
-dir_array=(
-	/path/to/dir/,
-	/path/to/dir/
-	(
-for dir in "${dir_array[@]}" ; do
-	echo $dir
-	if [ -e $dir ] ; then
+paths=(
+	"$HOME/.config/nvim"
+)
+if [ -d $HOME/.var/app/io.neovim.nvim ]; then
+	paths=(
+		"$HOME/.var/app/io.neovim.nvim/config/nvim"
+	)
+fi
+
+for path in "${paths[@]}" ; do
+	echo $path
+	if [ -e $path ] ; then
 		echo "dir exists"
 		continue
 	fi
-#	mkdir -p $dir
+		mkdir -p $dir
 done
 
 ################
 # Deploy files
 ################
-cp $cp_args
+#cp $cp_args
