@@ -1,31 +1,8 @@
-#################
-# Install stats
-#################
-# apt-cache policy <package-name>
-# dpkg -l | grep -E '^ii | grep <package-name>
-# which <package-name>
-# test -e /usr/bin/<package-name>
-# test -e /opt/???/<package-name>
-# test -e /bin/<package-name>
-# test -d $HOME/.var/app/<flatpak-ref>
-
-######################
-# Deploy directories
-######################
-dir_array=(
-	/path/to/dir/,
-	/path/to/dir/
-	(
-for dir in "${dir_array[@]}" ; do
-	echo $dir
-	if [ -e $dir ] ; then
-		echo "dir exists"
-		continue
-	fi
-#	mkdir -p $dir
-done
-
+#!/bin/bash
 ################
 # Deploy files
 ################
-cp $cp_args
+cp $cp_args "$local_path/.bash_aliases" "$HOME"
+cp $cp_args "$local_path/.bashrc" "$HOME"
+cp $cp_args "$local_path/.bash_logout" "$HOME"
+cp $cp_args "$local_path/.profile" "$HOME"
