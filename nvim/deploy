@@ -9,6 +9,7 @@
 # test -e /opt/???/<package-name>
 # test -e /bin/<package-name>
 
+# TODO install ripgrep as telescope dependency
 
 ######################
 # Deploy directories
