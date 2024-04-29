@@ -1,0 +1,1 @@
+add FLATPAK_ENABLE_SDK_EXT=rust-stable,golang to ~/.local/share/flatpak/exports/share/applications/io.neovim.nvim .desktop file
