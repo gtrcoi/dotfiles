@@ -1,1 +1,5 @@
 add FLATPAK_ENABLE_SDK_EXT=rust-stable,golang to ~/.local/share/flatpak/exports/share/applications/io.neovim.nvim .desktop file
+
+run terminal commands when needed for nvim sdk extensions:
+- cargo install ripgrep
+- cargo install fd-find
