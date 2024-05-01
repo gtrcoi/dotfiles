@@ -15,7 +15,7 @@
 target_paths=(
 	$HOME/.config,
 	$HOME/.config
-	(
+	)
 for target_path in "${target_paths[@]}" ; do
 	echo $target_path
 	if [ -e $target_path ] ; then
