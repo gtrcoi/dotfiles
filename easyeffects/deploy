@@ -1,0 +1,46 @@
+#################
+# Install stats
+#################
+# apt-cache policy <package-name>
+# dpkg -l | grep -E '^ii | grep <package-name>
+# which <package-name>
+# test -e /usr/bin/<package-name>
+# test -e /opt/???/<package-name>
+# test -e /bin/<package-name>
+# test -d $HOME/.var/app/<flatpak-ref>
+
+######################
+# Deploy directories
+######################
+target_paths=(
+	$HOME/.config,
+	$HOME/.config
+	)
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
+		continue
+	fi
+#	mkdir -p $target_path
+done
+
+################
+# Deploy files
+################
+# if [ -e "$local_path/LoudnessEqualizer.json" ] ; then
+# curl to $local_path/tmp_file https://raw.githubusercontent.com/Digitalone1/EasyEffects-Presets/master/LoudnessEqualizer.json
+# tmp_file=$local_path/tmp_file
+#cmp --silent $local_path/file.json $tmp_file || {
+#case $cp_args in
+# f)
+#   echo "f found" ;;
+# *)
+#   echo "not found"
+#   tmp_cp_args="$cp_argsf"
+#   ;;
+#esac
+#cp $cp_args "$local_path/file.conf" "$HOME/.config/.../"
+#}
+# fi
+#cp $cp_args "$local_path/file.conf" "$HOME/.config/.../"
