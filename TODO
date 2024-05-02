@@ -3,3 +3,7 @@ add FLATPAK_ENABLE_SDK_EXT=rust-stable,golang to ~/.local/share/flatpak/exports/
 run terminal commands when needed for nvim sdk extensions:
 - cargo install ripgrep
 - cargo install fd-find
+
+Source nerdfonts from repo. Maybe.
+
+Source easyeffects preset from https://github.com/Digitalone1/EasyEffects-Presets/blob/master/LoudnessEqualizer.json
