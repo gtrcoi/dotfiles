@@ -19,7 +19,7 @@ paths=(
 )
 if [ -d $HOME/.var/app/io.neovim.nvim ]; then
 	paths=(
-		"$HOME/.var/app/io.neovim.nvim/config/nvim"
+		"$HOME/.var/app/io.neovim.nvim/config/nvim/lua/plugins"
 	)
 fi
 
@@ -29,11 +29,11 @@ for path in "${paths[@]}" ; do
 		echo "dir exists"
 		continue
 	fi
-	mkdir -p $dir
+	mkdir -p $path
 done
 
 ################
 # Deploy files
 ################
-cp $cp_args $local_path/init.lua "$HOME/.var/app/io.neovim.nvim/config/nvim"
-#cp $cp_args
+cp $cp_args $local_path/init.lua "$HOME/.var/app/io.neovim.nvim/config/nvim/"
+cp $cp_args $local_path/plugins/* "$HOME/.var/app/io.neovim.nvim/config/nvim/lua/plugins/"
