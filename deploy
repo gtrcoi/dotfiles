@@ -54,7 +54,7 @@ Init()
 			echo "Overwrite permission required to re-init $arg. Run $script_name -f."
 			continue
 		fi
-		echo "Copying template -> $arg/deply"
+		echo "Copying template -> $arg/deploy"
 		cp $cp_args ./template ./$arg/deploy
 	done
 }
