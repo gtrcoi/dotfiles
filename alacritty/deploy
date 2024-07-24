@@ -9,6 +9,7 @@
 # test -e /bin/<package-name>
 # test -d $HOME/.var/app/<flatpak-ref>
 
+echo "[Alacritty]"
 ######################
 # Deploy directories
 ######################
@@ -28,3 +29,4 @@ done
 # Deploy files
 ################
 cp $cp_args "$local_path/alacritty.yml" "$HOME/.config/alacritty/"
+cp $cp_args "$local_path/alacritty.toml" "$HOME/.config/alacritty/"
