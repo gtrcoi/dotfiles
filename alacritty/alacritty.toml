@@ -1,6 +1,6 @@
-
-live_config_reload = true
-
 [font]
-#normal = { family = "FiraMono Nerd Font", style = "Regular" }
-#size = 15
+size = 14.0
+
+[font.normal]
+family = "FiraMono Nerd Font"
+style = "Regular"
