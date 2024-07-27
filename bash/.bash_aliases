@@ -26,6 +26,13 @@ alias media="cd '/media/user/4TB HDD'"
 #######
 alias gits="git status"
 
+#######
+# vim
+#######
+if [ -e "/usr/bin/nvim" ]; then
+  alias vim="nvim"
+fi
+
 ###########
 # flatpak
 ###########
