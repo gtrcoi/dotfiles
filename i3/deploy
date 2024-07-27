@@ -1,0 +1,35 @@
+#################
+# Install stats
+#################
+# apt-cache policy <package-name>
+# dpkg -l | grep -E '^ii | grep <package-name>
+# which <package-name>
+# test -e /usr/bin/<package-name>
+# test -e /opt/???/<package-name>
+# test -e /bin/<package-name>
+# test -d $HOME/.var/app/<flatpak-ref>
+
+echo "[i3]"
+######################
+# Deploy directories
+######################
+target_paths=(
+	$HOME/.config/i3
+	)
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
+		continue
+	fi
+#	mkdir -p $target_path
+done
+
+################
+# Deploy files
+################
+echo "Deploying i3status.conf"
+cp $cp_args "$local_path/i3status.conf" "$HOME/.config/i3/"
+
+echo "Deploying i3 config"
+cp $cp_args "$local_path/config" "$HOME/.config/i3/"
