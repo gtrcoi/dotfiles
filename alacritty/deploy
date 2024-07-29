@@ -28,11 +28,6 @@ done
 ################
 # Deploy files
 ################
-<<<<<<< HEAD
-cp $cp_args "$local_path/alacritty.yml" "$HOME/.config/alacritty/"
-cp $cp_args "$local_path/alacritty.toml" "$HOME/.config/alacritty/"
-=======
-
 tomlversion="0.13.0"
 alacrittyversion=$(alacritty --version | cut -d " " -f 2)
 echo "Alacritty ${alacrittyversion} found."
@@ -42,4 +37,3 @@ if printf "%s\n%s\n" $tomlversion $alacrittyversion | sort -V -C; then
 else
   cp $cp_args "$local_path/alacritty.yml" "$HOME/.config/alacritty/"
 fi
->>>>>>> d62bcb9 (added toml version check)
