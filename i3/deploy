@@ -14,7 +14,8 @@ echo "[i3]"
 # Deploy directories
 ######################
 target_paths=(
-	$HOME/.config/i3
+	$HOME/.config/i3/
+	$HOME/.config/i3status/
 	)
 for target_path in "${target_paths[@]}" ; do
 	echo $target_path
@@ -22,14 +23,17 @@ for target_path in "${target_paths[@]}" ; do
 		echo "$target_path exists"
 		continue
 	fi
-#	mkdir -p $target_path
+	mkdir -p $target_path
 done
 
 ################
 # Deploy files
 ################
 echo "Deploying i3status.conf"
-cp $cp_args "$local_path/i3status.conf" "$HOME/.config/i3/"
+cp $cp_args "$local_path/i3status.conf" "$HOME/.config/i3status/config"
 
 echo "Deploying i3 config"
 cp $cp_args "$local_path/config" "$HOME/.config/i3/"
+
+echo "Deploying i3 themes"
+ln $cp_args -dT "$local_path/themes/" "$HOME/.config/i3/themes"
