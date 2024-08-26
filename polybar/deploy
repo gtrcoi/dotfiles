@@ -27,4 +27,14 @@ done
 ################
 # Deploy files
 ################
+echo "Deploying config.ini"
 cp $cp_args "$local_path/config.ini" "$HOME/.config/polybar/"
+
+echo "Deploying modules.ini"
+cp $cp_args "$local_path/modules.ini" "$HOME/.config/polybar/"
+
+echo "Deploying polylaunch.sh"
+cp $cp_args "$local_path/polylaunch.sh" "$HOME/.config/polybar/"
+
+echo "Deploying polybar themes"
+ln $cp_args -dT "$local_path/themes" "$HOME/.config/polybar/themes"
