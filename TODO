@@ -7,3 +7,10 @@ run terminal commands when needed for nvim sdk extensions:
 Source nerdfonts from repo. Maybe.
 
 Source easyeffects preset from https://github.com/Digitalone1/EasyEffects-Presets/blob/master/LoudnessEqualizer.json
+
+====================================
+Install acpilight
+
+chgrp video /sys/class/backlight/*/brightness
+
+place ./scripts/90-backlight.rule in /etc/udev/rules.d/ with root
