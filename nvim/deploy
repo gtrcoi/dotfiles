@@ -38,4 +38,4 @@ done
 # Deploy files
 ################
 cp $cp_args $local_path/init.lua $nvim_config
-ln $cp_args -d $local_path/plugins/ "$nvim_config/lua"
+ln $cp_args -dT $local_path/plugins/ "$nvim_config/lua/plugins"
