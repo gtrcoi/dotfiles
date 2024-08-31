@@ -27,3 +27,14 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export TERMINAL=alacritty
+
+###########
+# EDITOR env
+###########
+if [ -e "/usr/bin/nvim" ]; then
+  export EDITOR="nvim"
+fi
+
+if [ -d "$HOME/.var/app/io.neovim.nvim" ]; then
+  export EDITOR="flatpak run io.neovim.nvim"
+fi
