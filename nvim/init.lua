@@ -5,6 +5,7 @@ vim.cmd("set shiftwidth=2")
 vim.cmd("set clipboard=unnamed,unnamedplus")
 vim.cmd("set statusline=+%F")
 vim.cmd("set nu")
+vim.cmd("set termguicolors")
 vim.g.mapleader = " "
 
 -- Send x to void

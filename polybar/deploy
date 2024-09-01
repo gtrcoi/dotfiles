@@ -9,13 +9,11 @@
 # test -e /bin/<package-name>
 # test -d $HOME/.var/app/<flatpak-ref>
 
-echo "[i3]"
 ######################
 # Deploy directories
 ######################
 target_paths=(
-	$HOME/.config/i3/
-	$HOME/.config/i3status/
+	$HOME/.config/polybar
 	)
 for target_path in "${target_paths[@]}" ; do
 	echo $target_path
@@ -29,11 +27,14 @@ done
 ################
 # Deploy files
 ################
-echo "Deploying i3status.conf"
-cp $cp_args "$local_path/i3status.conf" "$HOME/.config/i3status/config"
+echo "Deploying config.ini"
+cp $cp_args "$local_path/config.ini" "$HOME/.config/polybar/"
 
-echo "Deploying i3 config"
-cp $cp_args "$local_path/config" "$HOME/.config/i3/"
+echo "Deploying modules.ini"
+cp $cp_args "$local_path/modules.ini" "$HOME/.config/polybar/"
 
-echo "Deploying i3 themes"
-ln $cp_args -dT "$local_path/themes/" "$HOME/.config/i3/themes"
+echo "Deploying polylaunch.sh"
+cp $cp_args "$local_path/polylaunch.sh" "$HOME/.config/polybar/"
+
+echo "Deploying polybar themes"
+ln $cp_args -dT "$local_path/themes" "$HOME/.config/polybar/themes"

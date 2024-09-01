@@ -15,12 +15,12 @@
 # Deploy directories
 ######################
 paths=(
-	"$HOME/.config/nvim/lua/plugins"
+	"$HOME/.config/nvim/lua"
 )
 nvim_config="$HOME/.config/nvim"
 if [ -d $HOME/.var/app/io.neovim.nvim ]; then
 	paths=(
-		"$HOME/.var/app/io.neovim.nvim/config/nvim/lua/plugins"
+		"$HOME/.var/app/io.neovim.nvim/config/nvim/lua"
 	)
   nvim_config="$HOME/.var/app/io.neovim.nvim/config/nvim"
 fi
@@ -38,4 +38,4 @@ done
 # Deploy files
 ################
 cp $cp_args $local_path/init.lua $nvim_config
-cp $cp_args $local_path/plugins/* "$nvim_config/lua/plugins/"
+ln $cp_args -dT $local_path/plugins/ "$nvim_config/lua/plugins"
