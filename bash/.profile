@@ -38,3 +38,5 @@ fi
 if [ -d "$HOME/.var/app/io.neovim.nvim" ]; then
   export EDITOR="flatpak run io.neovim.nvim"
 fi
+
+export AVALONIA_SCREEN_SCALE_FACTORS=HDMI-0=2.5
