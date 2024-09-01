@@ -28,9 +28,9 @@ fi
 
 export TERMINAL=alacritty
 
-###########
+##############
 # EDITOR env
-###########
+##############
 if [ -e "/usr/bin/nvim" ]; then
   export EDITOR="nvim"
 fi
@@ -40,3 +40,11 @@ if [ -d "$HOME/.var/app/io.neovim.nvim" ]; then
 fi
 
 export AVALONIA_SCREEN_SCALE_FACTORS=HDMI-0=2.5
+
+#############
+# NVM setup
+#############
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.local/share/nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec
