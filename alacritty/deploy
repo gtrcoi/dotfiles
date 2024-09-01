@@ -37,3 +37,6 @@ if printf "%s\n%s\n" $tomlversion $alacrittyversion | sort -V -C; then
 else
   cp $cp_args "$local_path/alacritty.yml" "$HOME/.config/alacritty/"
 fi
+
+echo "Deploying alacritty themes"
+ln $cp_args -dT "$local_path/themes/" "$HOME/.config/alacritty/themes"
