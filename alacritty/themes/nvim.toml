@@ -17,14 +17,14 @@ cursor = '#ebeef5'
 # magenta = '#4c0049'
 # cyan    = '#007676'
 # white   = '#4f5258'
-black   = '#9b9ea4'
+black   = '#1c1d23'
 red     = '#ffbcb5'
 green   = '#aaedb7'
 yellow  = '#f4d88c'
 blue    = '#9fd8ff'
 magenta = '#ffc3fa'
 cyan    = '#83efef'
-white   = '#9b9ea4'
+white   = '#ebeef5'
 
 # Bright colors
 [colors.bright]
