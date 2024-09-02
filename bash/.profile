@@ -48,3 +48,8 @@ export AVALONIA_SCREEN_SCALE_FACTORS=HDMI-0=2.5
 source /usr/share/nvm/nvm.sh
 source /usr/share/nvm/bash_completion
 source /usr/share/nvm/install-nvm-exec
+
+# feh
+if [ -e ~/.fehbg ]; then
+  ~/.fehbg
+fi
