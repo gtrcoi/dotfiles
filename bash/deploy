@@ -2,7 +2,7 @@
 ################
 # Deploy files
 ################
-cp $cp_args "$local_path/.bash_aliases" "$HOME"
-cp $cp_args "$local_path/.bashrc" "$HOME"
-cp $cp_args "$local_path/.bash_logout" "$HOME"
-cp $cp_args "$local_path/.profile" "$HOME"
+cp $cp_args "$local_path/aliases" "$HOME/.bash_aliases"
+cp $cp_args "$local_path/bashrc" "$HOME/.bashrc"
+cp $cp_args "$local_path/bash_logout" "$HOME/.bash_logout"
+cp $cp_args "$local_path/profile" "$HOME/.profile"
