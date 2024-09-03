@@ -111,3 +111,8 @@ fi
 # remove "bind" builtin and place in /etc/inputrc or ~/.inputrc 
 # to apply to zsh, etc
 bind 'set completion-ignore-case on'
+
+# Prompt
+PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'
+PS1='\e[0;32m\u@\h:\e[m\w/(${PS1_CMD1})\n\e[0;32m\$\e[m  '
+PROMPT_DIRTRIM=1
