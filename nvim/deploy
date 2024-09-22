@@ -1,13 +1,4 @@
 #!/bin/bash
-##################
-# Install stats
-#################
-# apt-cache policy <package-name>
-# dpkg -l | grep -E '^ii | grep <package-name>
-# which <package-name>
-# test -e /usr/bin/<package-name>
-# test -e /opt/???/<package-name>
-# test -e /bin/<package-name>
 
 # TODO install ripgrep as telescope dependency
 
@@ -15,27 +6,32 @@
 # Deploy directories
 ######################
 paths=(
-	"$HOME/.config/nvim/lua"
+	"$HOME/.config/nvim/"
 )
-nvim_config="$HOME/.config/nvim"
+nvim_config="$HOME/.config/"
 if [ -d $HOME/.var/app/io.neovim.nvim ]; then
 	paths=(
-		"$HOME/.var/app/io.neovim.nvim/config/nvim/lua"
+		"$HOME/.var/app/io.neovim.nvim/config/nvim/"
 	)
-  nvim_config="$HOME/.var/app/io.neovim.nvim/config/nvim"
+  nvim_config="$HOME/.var/app/io.neovim.nvim/config/"
 fi
 
 for path in "${paths[@]}" ; do
+  path=$(realpath -s $path)
 	echo $path
-	if [ -e $path ] ; then
-		echo "dir exists"
+  if [ -L $path ] ; then
+    echo "Link exists"
+    rm $path
+    continue
+  fi
+	if [ -e $path ] && [ ! -L $path ] ; then
+		echo "Dir exists"
+    rm -rf $path
 		continue
 	fi
-	mkdir -p $path
 done
 
 ################
 # Deploy files
 ################
-cp $cp_args $local_path/init.lua $nvim_config
-ln $cp_args -dT $local_path/plugins/ "$nvim_config/lua/plugins"
+ln -sf $local_path $nvim_config
