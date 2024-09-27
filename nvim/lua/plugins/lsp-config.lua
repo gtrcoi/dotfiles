@@ -10,7 +10,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = { "lua_ls" }, -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file
-    })
+      })
     end
   },
   {
