@@ -26,8 +26,3 @@ o.showcmd = true
 o.showmatch = true
 o.inccommand = "split"
 o.termguicolors = true
-
--- Send x to void
-vim.api.nvim_set_keymap("n", "x", '"_x', {noremap=true})
-vim.api.nvim_set_keymap("n", "X", '"_X', {noremap=true})
-vim.api.nvim_set_keymap("n", "<Del>", '"_x', {noremap=true})
