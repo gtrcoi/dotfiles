@@ -15,8 +15,15 @@ map("n", "<leader>q", "<CMD>q<CR>")
 -- map("i", "jk", "<ESC>")
 
 -- NeoTree
--- map("n", "<leader>e", "<CMD>Neotree toggle<CR>")
+map("n", "<leader>t", "<CMD>Neotree toggle<CR>")
 -- map("n", "<leader>r", "<CMD>Neotree focus<CR>")
+-- map('n', '<leader>t', ':Neotree filesystem reveal left toggle<CR>')
+
+-- Telescope
+map('n', '<leader>ff', "<CMD>Telescope find_files<CR>")
+map('n', '<leader>fg', "<CMD>Telescope live_grep<CR>")
+map('n', '<leader>fb', "<CMD>Telescope buffers<CR>")
+map('n', '<leader>fh', "<CMD>Telescope help_tags<CR>")
 
 -- New Windows
 map("n", "<leader>o", "<CMD>vsplit<CR>")
