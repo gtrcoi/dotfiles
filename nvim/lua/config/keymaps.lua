@@ -11,6 +11,11 @@ map("n", "<leader>w", "<CMD>update<CR>")
 -- Quit
 map("n", "<leader>q", "<CMD>q<CR>")
 
+-- Send x to void
+vim.api.nvim_set_keymap("n", "x", '"_x', {noremap=true})
+vim.api.nvim_set_keymap("n", "X", '"_X', {noremap=true})
+vim.api.nvim_set_keymap("n", "<Del>", '"_x', {noremap=true})
+
 -- Exit insert mode
 -- map("i", "jk", "<ESC>")
 
