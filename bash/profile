@@ -12,7 +12,7 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+	      . "$HOME/.bashrc"
     fi
 fi
 
@@ -51,5 +51,10 @@ source /usr/share/nvm/install-nvm-exec
 
 # feh
 if [ -e ~/.fehbg ]; then
-  ~/.fehbg
+  . ~/.fehbg
+fi
+
+# dircolors
+if [ -e ~/.dircolors ]; then
+  eval 'dircolors ~/.dircolors'
 fi
