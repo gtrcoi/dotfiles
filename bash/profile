@@ -60,5 +60,5 @@ if [ -e ~/.dircolors ]; then
 fi
 
 if [ -e /usr/bin/picom ]; then
-  picom -bin
+  picom -b --config $HOME/.config/picom/picom.conf
 fi
