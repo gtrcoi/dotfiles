@@ -58,3 +58,7 @@ fi
 if [ -e ~/.dircolors ]; then
   eval 'dircolors ~/.dircolors'
 fi
+
+if [ -e /usr/bin/picom ]; then
+  picom -bin
+fi
