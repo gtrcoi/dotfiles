@@ -6,7 +6,7 @@ global.mapleader = " "
 
 o.statusline = "%F %m"
 o.number = true
-o.relativenumber = true
+-- o.relativenumber = true
 o.clipboard = "unnamed,unnamedplus"
 o.syntax = "on"
 o.autoindent = true
@@ -26,3 +26,8 @@ o.showcmd = true
 o.showmatch = true
 o.inccommand = "split"
 o.termguicolors = true
+
+-- treesitter folding
+o.foldmethod= 'expr'
+o.foldexpr= 'nvim_treesitter#foldexpr()'
+o.foldenable = false
