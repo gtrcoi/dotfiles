@@ -9,7 +9,10 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "clangd" }, -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file
+        ensure_installed = {
+          "lua_ls",
+          "clangd"
+        }, -- https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file
       })
     end
   },
@@ -19,7 +22,13 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({
-        cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+        cmd = {
+          'clangd',
+          '--background-index',
+          '--clang-tidy',
+          '--suggest-missing-includes',
+          '--log=verbose'
+        },
         init_options = {
           -- fallbackFlags = { '-std=c++17' },
         },
