@@ -3,7 +3,9 @@ return {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = true,
-    opts = {}
+    opts = {
+      -- transparent_mode = true,
+    }
   },
   {
     'maxmx03/solarized.nvim',
@@ -23,6 +25,8 @@ return {
     "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = true,
+    },
   },
 }
