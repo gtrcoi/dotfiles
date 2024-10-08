@@ -45,3 +45,9 @@ map("n", "<C-Left>", "<C-w><")
 map("n", "<C-Right>", "<C-w>>")
 map("n", "<C-Up>", "<C-w>+")
 map("n", "<C-Down>", "<C-w>-")
+
+-- LSP stuff
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, {})
+vim.keymap.set({ 'n', 'v', }, '<leader>ca', vim.lsp.buf.code_action, {})
