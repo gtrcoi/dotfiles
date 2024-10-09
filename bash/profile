@@ -8,6 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+DISPLAY_SERVER=$(loginctl show-session self -p Type | awk -F= '{print $2}')
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -61,6 +63,6 @@ if [ -e ~/.dircolors ]; then
   eval 'dircolors ~/.dircolors'
 fi
 
-if [ -e /usr/bin/picom ]; then
+if [ -e /usr/bin/picom ] && [ "$DISPLAY_SERVER" = "x11" ]; then
   picom -b --config $HOME/.config/picom/picom.conf
 fi
