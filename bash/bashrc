@@ -112,8 +112,12 @@ fi
 # to apply to zsh, etc
 bind 'set completion-ignore-case on'
 
+# Terminal text effect variables
+F_GREEN="$(tput setaf 2)"
+F_BLUE="$(tput setaf 4)"
+RESET="$(tput sgr0)"
 # Prompt
-# Wrap 0 length sections (e.g. \e[x;y) with \[...\] to avoid bugged history
+# Wrap 0 length sections (e.g. \e[x;y) or tput commands with \[...\] to avoid line length errors
 PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'
-PS1='\[\e[0;32m\]\u@\h:\[\e[m\]\w/ ${PS1_CMD1}\n\[\e[0;32m\]\$\[\e[m\]  '
+PS1='\[${F_BLUE}\]\u@\h:\[${RESET}\]\w/ ${PS1_CMD1}\n\[${F_BLUE}\]\$\[${RESET}\]  '
 PROMPT_DIRTRIM=1
