@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# TODO install ripgrep as telescope dependency
+
+######################
+# Deploy directories
+######################
+paths=(
+  "$HOME/.config/rofi/"
+  "$HOME/.local/share/rofi/themes/"
+)
+rofi_config="$HOME/.config/"
+rofi_themes="$HOME/.local/share/rofi/"
+
+for path in "${paths[@]}"; do
+  path=$(realpath -ms $path)
+  echo "Checking $path"
+  if [ -L $path ]; then
+    echo "Link exists"
+    rm -v $path
+    continue
+  fi
+  if [ -e $path ] && [ ! -L $path ]; then
+    echo "Dir exists"
+    rm -rf $path
+    continue
+  fi
+done
+
+################
+# Deploy files
+################
+ln -sf $local_path $rofi_config
+ln -sf $local_path/themes $rofi_themes
