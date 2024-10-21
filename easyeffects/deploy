@@ -1,46 +1,28 @@
-#################
-# Install stats
-#################
-# apt-cache policy <package-name>
-# dpkg -l | grep -E '^ii | grep <package-name>
-# which <package-name>
-# test -e /usr/bin/<package-name>
-# test -e /opt/???/<package-name>
-# test -e /bin/<package-name>
-# test -d $HOME/.var/app/<flatpak-ref>
-
+GIT_REPOSITORY="https://raw.githubusercontent.com/JackHack96/EasyEffects-Presets/master"
 ######################
 # Deploy directories
 ######################
-target_paths=(
-	$HOME/.config,
-	$HOME/.config
-	)
-for target_path in "${target_paths[@]}" ; do
-	echo $target_path
-	if [ -e $target_path ] ; then
-		echo "$target_path exists"
-		continue
-	fi
-#	mkdir -p $target_path
-done
+if command -v flatpak &>/dev/null && flatpak list | grep -q "com.github.wwmm.easyeffects"; then
+        PRESETS_DIRECTORY="$HOME/.var/app/com.github.wwmm.easyeffects/config/easyeffects"
+    elif which easyeffects >/dev/null; then
+        PRESETS_DIRECTORY="$HOME/.config/easyeffects"
+    else
+        echo "Error! Couldn't find EasyEffects presets directory!"
+        exit 1
+    fi
+    mkdir -p $PRESETS_DIRECTORY
 
 ################
 # Deploy files
 ################
-# if [ -e "$local_path/LoudnessEqualizer.json" ] ; then
-# curl to $local_path/tmp_file https://raw.githubusercontent.com/Digitalone1/EasyEffects-Presets/master/LoudnessEqualizer.json
-# tmp_file=$local_path/tmp_file
-#cmp --silent $local_path/file.json $tmp_file || {
-#case $cp_args in
-# f)
-#   echo "f found" ;;
-# *)
-#   echo "not found"
-#   tmp_cp_args="$cp_argsf"
-#   ;;
-#esac
-#cp $cp_args "$local_path/file.conf" "$HOME/.config/.../"
-#}
-# fi
+if [ -e "$local_path/LoudnessEqualizer.json" ] ; then
+  curl -o $local_path/tmp_file $GIT_REPOSITORY/LoudnessEqualizer.json
+  tmp_file=$local_path/tmp_file
+  if cmp --silent $local_path/LoudnessEqualizer.json $tmp_file; then
+    rm $tmp_file
+  else
+    cp -f $tmp_file $local_path/LoudnessEqualizer.json
+  fi
+fi
+
 #cp $cp_args "$local_path/file.conf" "$HOME/.config/.../"
