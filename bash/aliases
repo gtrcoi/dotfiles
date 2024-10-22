@@ -40,4 +40,9 @@ if [ -d "$HOME/.var/app/io.neovim.nvim" ]; then
   alias vim="flatpak run io.neovim.nvim"
 fi
 
+##########
+# Python
+##########
+alias startenv=". ./venv/bin/activate"
+
 # unsorted
