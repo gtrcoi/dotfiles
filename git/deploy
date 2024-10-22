@@ -1,0 +1,28 @@
+#!/bin/bash
+######################
+# Deploy directories
+######################
+paths=(
+  "$HOME/.config/git/"
+)
+git_config="$HOME/.config/"
+
+for path in "${paths[@]}"; do
+  path=$(realpath -s $path)
+  echo $path
+  if [ -L $path ]; then
+    echo "Link exists"
+    rm $path
+    continue
+  fi
+  if [ -e $path ] && [ ! -L $path ]; then
+    echo "Dir exists"
+    rm -rf $path
+    continue
+  fi
+done
+
+################
+# Deploy files
+################
+ln -sf $local_path $git_config
