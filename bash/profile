@@ -29,6 +29,8 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 export TERMINAL=alacritty
+export MANPAGER='nvim +Man!'
+# export MANWIDTH=999 # breaks formatting, idk
 
 ##############
 # EDITOR env
