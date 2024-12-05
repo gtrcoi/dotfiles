@@ -1,0 +1,20 @@
+######################
+# Deploy directories
+######################
+target_paths=(
+	$HOME/.config/waybar
+	)
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
+		continue
+	fi
+	mkdir -p $target_path
+done
+
+################
+# Deploy files
+################
+cp $cp_args "$local_path/config.jsonc" "$HOME/.config/waybar/"
+cp $cp_args "$local_path/style.css" "$HOME/.config/waybar/"
