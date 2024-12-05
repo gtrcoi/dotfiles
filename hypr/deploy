@@ -1,0 +1,20 @@
+######################
+# Deploy directories
+######################
+target_paths=(
+	$HOME/.config/hypr
+	)
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
+		continue
+	fi
+	mkdir -p $target_path
+done
+
+################
+# Deploy files
+################
+cp $cp_args "$local_path/hyprland.conf" "$HOME/.config/hypr/"
+cp $cp_args "$local_path/hyprpaper.conf" "$HOME/.config/hypr/"
