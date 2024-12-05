@@ -1,0 +1,19 @@
+######################
+# Deploy directories
+######################
+target_paths=(
+	$HOME/.config/sway
+	)
+for target_path in "${target_paths[@]}" ; do
+	echo $target_path
+	if [ -e $target_path ] ; then
+		echo "$target_path exists"
+		continue
+	fi
+	mkdir -p $target_path
+done
+
+################
+# Deploy files
+################
+cp $cp_args "$local_path/config" "$HOME/.config/sway/"
