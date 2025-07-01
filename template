@@ -13,7 +13,7 @@
 # Deploy directories
 ######################
 target_paths=(
-	$HOME/.config,
+	$HOME/.config
 	$HOME/.config
 	)
 for target_path in "${target_paths[@]}" ; do
