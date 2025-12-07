@@ -8,3 +8,4 @@ foo.*
 *.log
 data
 nvim/colors
+lazy-lock.json
