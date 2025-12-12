@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+import os
+import sys
+
+current_directory_path = os.getcwd()
+roles_directory_path = os.path.join(current_directory_path, "roles")
+
+task_contents = """
+---
+- name: Include actions
+  ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
+  loop:
+    - install_packages
+  loop_control:
+    loop_var: action_name
+"""
+vars_contents = """
+---
+# install_* actions ------------------------------------------------------------
+# [name: str, state: str] ------------------------------------------------------
+role_packages: []
+role_flatpaks: []
+
+# manage_services action -------------------------------------------------------
+# [name: str, enabled: bool, state: str] ---------------------------------------
+role_services: []
+
+# *_files_data actions ---------------------------------------------------------
+# Directories must end in trailing slash ---------------------------------------
+# [src: path, dest: path, become: bool] ----------------------------------------
+files_data:
+  - src: '{{ role_dir }}/files/'
+  - dest: '{{ ansible_facts["user"] }}/.config/{{ role_name }}/
+"""
+
+
+def create_roles():
+    role_args = sys.argv[1:]
+    for role in role_args:
+        print(f"{roles_directory_path}/{role}")
+
+
+def main():
+    if not os.path.isdir(roles_directory_path):
+        print(
+            f"ERROR: Required directory 'roles' not found at: {roles_directory_path}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    print(task_contents)
+
+
+if __name__ == "__main__":
+    main()
