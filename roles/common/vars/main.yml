@@ -1,4 +1,7 @@
 ---
 role_packages:
-  - wl-clipboard
-  - unzip
+  - name: wl-clipboard
+    state: present
+
+  - name: unzip
+    state: present
