@@ -1,1 +1,12 @@
 ---
+- name: Host provisioning
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Include roles from host_vars
+      ansible.builtin.include_role:
+        name: "{{ role_name }}"
+      loop: "{{ host_roles }}"
+      loop_control:
+        loop_var: role_name
