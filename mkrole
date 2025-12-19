@@ -20,6 +20,7 @@ def report_errors(func):
             return func(*args, **kwargs)
         except Exception as e:
             print(f"Error in {func.__name__}: {e}", file=sys.stderr)
+            pass
 
     return wrapper
 
@@ -31,7 +32,20 @@ def create_role(role_name: str):
     if not SKELETON_DIR.exists():
         print(f"Error: Skeleton directory {SKELETON_DIR} not found!", file=sys.stderr)
 
-    shutil.copytree(SKELETON_DIR, dest_path, dirs_exist_ok=True)
+    for source_file in SKELETON_DIR.rglob("*"):
+        relative_path = source_file.relative_to(SKELETON_DIR)
+        target_file = dest_path / relative_path
+
+        if source_file.is_dir():
+            target_file.mkdir(parents=True, exist_ok=True)
+
+        else:
+            if target_file.exists():
+                print(f"  Skipped: {relative_path} (already exists)")
+
+            else:
+                shutil.copy(source_file, target_file)
+                print(f"  Created: {relative_path}")
 
 
 def main():
