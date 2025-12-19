@@ -2,6 +2,6 @@
 - name: Install Packages
   ansible.builtin.package:
     name: "{{ item.name }}"
-    state: "{{ item.state }}"
+    state: '{{ item.state | default("present") }}'
   loop: "{{ role_packages }}"
   when: role_packages is not empty
