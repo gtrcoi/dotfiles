@@ -1,54 +1,50 @@
 #!/usr/bin/env python3
+import functools
 import os
+import shutil
 import sys
+from pathlib import Path
 
-current_directory_path = os.getcwd()
-roles_directory_path = os.path.join(current_directory_path, "roles")
+SCRIPT_DIR = Path(__file__).parent
+SKELETON_DIR = SCRIPT_DIR / ".role_skeleton"
 
-task_contents = """
----
-- name: Include actions
-  ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
-  loop:
-    - install_packages
-  loop_control:
-    loop_var: action_name
-"""
-vars_contents = """
----
-# install_* actions ------------------------------------------------------------
-# [name: str, state: str] ------------------------------------------------------
-role_packages: []
-role_flatpaks: []
+CWD_ROLES_PATH = Path.cwd() / "roles"
 
-# manage_services action -------------------------------------------------------
-# [name: str, enabled: bool, state: str] ---------------------------------------
-role_services: []
-
-# *_files_data actions ---------------------------------------------------------
-# Directories must end in trailing slash ---------------------------------------
-# [src: path, dest: path, become: bool] ----------------------------------------
-files_data:
-  - src: '{{ role_dir }}/files/'
-  - dest: '{{ ansible_facts["user"] }}/.config/{{ role_name }}/
-"""
+ROLE_SUBDIRS = ["tasks", "vars", "meta", "defaults", "files", "templates", "handlers"]
 
 
-def create_roles():
-    role_args = sys.argv[1:]
-    for role in role_args:
-        print(f"{roles_directory_path}/{role}")
+def report_errors(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            print(f"Error in {func.__name__}: {e}", file=sys.stderr)
+
+    return wrapper
+
+
+@report_errors
+def create_role(role_name: str):
+    dest_path = CWD_ROLES_PATH / role_name
+
+    if not SKELETON_DIR.exists():
+        print(f"Error: Skeleton directory {SKELETON_DIR} not found!", file=sys.stderr)
+
+    shutil.copytree(SKELETON_DIR, dest_path, dirs_exist_ok=True)
 
 
 def main():
-    if not os.path.isdir(roles_directory_path):
+    if not os.path.isdir(CWD_ROLES_PATH):
         print(
-            f"ERROR: Required directory 'roles' not found at: {roles_directory_path}",
+            f"ERROR: Required directory 'roles' not found at: {CWD_ROLES_PATH}",
             file=sys.stderr,
         )
         sys.exit(1)
 
-    print(task_contents)
+    role_args = sys.argv[1:]
+    for role_name in role_args:
+        create_role(role_name)
 
 
 if __name__ == "__main__":
