@@ -1,0 +1,7 @@
+---
+- name: Manage services
+  ansible.builtin.service:
+    name: "{{ item.name }}"
+    enabled: "{{ item.enabled | default(omit) }}"
+    state: "{{ items.state | default(omit, true) }}"
+  loop: "{{ role_services | default([], true) }}"
