@@ -1,37 +1,41 @@
 ---
-- name: Get stats
-  ansible.builtin.stat:
-    path: "{{ item.dest }}"
-  register: dest_stats
-  loop: "{{ files_data }}"
+- name: symlink files_data
+  block:
+    - name: Get stats
+      ansible.builtin.stat:
+        path: "{{ item.dest }}"
+      register: dest_stats
+      loop: "{{ files_data }}"
 
-- name: Identify items to be purged
-  ansible.builtin.set_fact:
-    items_to_delete: "{{ dest_stats.results | selectattr('stat.exists') | rejectattr('stat.islnk') | map(attribute='item.dest') | list }}"
+    - name: Identify items to be purged
+      ansible.builtin.set_fact:
+        items_to_delete: "{{ dest_stats.results | selectattr('stat.exists') | rejectattr('stat.islnk') | map(attribute='item.dest') | list }}"
 
-- name: Confirm deletion
-  ansible.builtin.pause:
-    prompt: |
-      The following paths are REAL files/directories and will be DELETED:
-      {{ items_to_delete | to_nice_yaml }}
-      Press 'Enter' to continue or 'Ctrl+C' then 'a' to abort.
-  when: items_to_delete | length > 0
+    - name: Confirm deletion
+      ansible.builtin.pause:
+        prompt: |
+          The following paths are REAL files/directories and will be DELETED:
+          {{ items_to_delete | to_nice_yaml }}
+          Press 'Enter' to continue or 'Ctrl+C' then 'a' to abort.
+      when: items_to_delete | length > 0
 
-- name: Delete non-symlinks
-  ansible.builtin.file:
-    path: "{{ item.stat.path }}"
-    state: absent
-  loop: "{{ dest_stats.results }}"
-  when:
-    - item.stat.exists
-    - not item.stat.islnk
+    - name: Delete non-symlinks
+      ansible.builtin.file:
+        path: "{{ item.stat.path }}"
+        state: absent
+      loop: "{{ dest_stats.results }}"
+      when:
+        - item.stat.exists
+        - not item.stat.islnk
 
-- name: Create symlink(s)
-  ansible.builtin.file:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default(omit, true) }}"
-    group: "{{ item.group | default(item.owner, true) | default(omit, true) }}"
-    state: link
-    force: true
-  loop: "{{ files_data }}"
+    - name: Create symlink(s)
+      ansible.builtin.file:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: "{{ item.owner | default(omit, true) }}"
+        group: "{{ item.group | default(item.owner, true) | default(omit, true) }}"
+        state: link
+        force: true
+      loop: "{{ files_data }}"
+
+  when: files_data is defined and files_data | length > 0
