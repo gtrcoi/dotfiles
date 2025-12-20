@@ -1,11 +1,4 @@
-test*
-tt.*
-.tests
-doc/tags
-.repro
-foo.*
-*.log
-data
+/test
 nvim/colors
 **/lazy-lock.json
 **/lazyvim.json
