@@ -6,5 +6,6 @@
     - install_flatpaks
     - symlink_files_data
     - copy_files_data
+    - manage_services
   loop_control:
     loop_var: action_name
