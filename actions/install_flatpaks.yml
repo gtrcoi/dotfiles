@@ -1,0 +1,6 @@
+---
+- name: Install Packages
+  ansible.general.flatpak:
+    name: "{{ item.name }}"
+    state: '{{ item.state | default("present", true) }}'
+  loop: "{{ role_flatpaks | default([], true) }}"
