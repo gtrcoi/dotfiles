@@ -3,6 +3,7 @@
 # [name: str, state: str] ------------------------------------------------------
 # role_packages: []
 # role_flatpaks: []
+# role_AUR: []
 
 # manage_services action -------------------------------------------------------
 # [name: str, enabled: bool, state: str] ---------------------------------------
