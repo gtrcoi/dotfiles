@@ -13,5 +13,5 @@ role_packages: [nvidia]
 # Directories must end in trailing slash ---------------------------------------
 # [src: path, dest: path, become: bool] ----------------------------------------
 # files_data:
-#   - src: '{{ role_dir }}/files/'
+#   - src: '{{ role_path }}/files/'
 #   - dest: '{{ ansible_facts["user"] }}/.config/{{ role_name }}/'

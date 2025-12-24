@@ -12,7 +12,7 @@
 # Directories must end in trailing slash ---------------------------------------
 # [src: path, dest: path, become: bool] ----------------------------------------
 files_data:
-  - src: "{{ role_dir }}/files/"
+  - src: "{{ role_path }}/files/"
     dest: "/tmp/ansible-symlink/"
-  - src: "{{ role_dir }}/files/"
+  - src: "{{ role_path }}/files/"
     dest: "/tmp/ansible-copy/"
