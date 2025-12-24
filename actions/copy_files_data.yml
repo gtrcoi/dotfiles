@@ -5,7 +5,7 @@
       ansible.builtin.stat:
         path: "{{ item.dest }}"
       register: dest_stats
-      loop: "{{ files_data }}"
+      loop: "{{ files_data | default([]) }}"
 
     - name: Identify items to be purged
       ansible.builtin.set_fact:
