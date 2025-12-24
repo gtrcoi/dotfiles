@@ -1,0 +1,8 @@
+---
+- name: Ensure tmp directories are removed
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /tmp/ansible-symlink
+    - /tmp/ansible-copy

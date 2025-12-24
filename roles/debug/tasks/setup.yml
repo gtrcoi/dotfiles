@@ -1,0 +1,9 @@
+---
+- name: Create specific tmp directories for testing
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - /tmp/ansible-symlink
+    - /tmp/ansible-copy

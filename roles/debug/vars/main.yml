@@ -11,6 +11,8 @@
 # *_files_data actions ---------------------------------------------------------
 # Directories must end in trailing slash ---------------------------------------
 # [src: path, dest: path, become: bool] ----------------------------------------
-# files_data:
-#   - src: '{{ role_dir }}/files/'
-#   - dest: '{{ ansible_facts["user"] }}/.config/{{ role_name }}/'
+files_data:
+  - src: "{{ role_dir }}/files/"
+    dest: "/tmp/ansible-symlink/"
+  - src: "{{ role_dir }}/files/"
+    dest: "/tmp/ansible-copy/"
