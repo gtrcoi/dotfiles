@@ -1,12 +1,44 @@
 ---
-- name: Include actions
-  ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
+- name: Nvidia role
   tags: nvidia
-  loop:
-    - install_packages
-    - install_flatpaks
-    - symlink_files_data
-    - copy_files_data
-    - manage_services
-  loop_control:
-    loop_var: action_name
+  block:
+    - name: Extract NVIDIA Chipset Prefix
+      shell: |
+        set -o pipefailt
+        lspci -nn | grep -i 'VGA.*NVIDIA' | grep -oP 'NVIDIA Corporation \\K[A-Z0-9]{2}'
+      register: gpu_prefix_raw
+      changed_when: false
+      # ignore_errors: true # <- false might be better so it fails if role used against non-nvidia host
+
+    - name: Set Driver Variable
+      set_fact:
+        nvidia_driver_pkg: "{{ driver_map[gpu_prefix_raw.stdout] | default('nvidia-open') }}"
+      vars:
+        driver_map:
+          # https://wiki.archlinux.org/title/NVIDIA#Installation
+          # https://nouveau.freedesktop.org/CodeNames.html
+          AD: "nvidia-open"           # Ada (40-series)
+          GA: "nvidia-open"           # Ampere (30-series)
+          TU: "nvidia-open"           # Turing (20-series)
+          GP: "nvidia-580xx-dkms"     # Pascal (10-series)
+          GV: "nvidia-580xx-dkms"     # Volta (Quadro)
+          GM: "nvidia-580xx-dkms"     # Maxwell (900-series)
+          GK: "nvidia-470xx-dkms"     # Kepler
+          GF: "nvidia-390xx-dkms"     # Fermi
+          # cbf adding 340xx stuff
+
+    - name: Include actions
+      ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
+      tags: nvidia
+      loop:
+        - install_packages
+        - install_flatpaks
+        - symlink_files_data
+        - copy_files_data
+        - manage_services
+      loop_control:
+        loop_var: action_name
+      vars:
+        gpu_vars: "{{ lookup('file', 'vars/' + nvidia_driver_pkg + '.yml') | from_yaml }}"
+        role_packages: "{{ role_packages + gpu_vars.role_packages }}"
+        role_AUR: "{{ role_AUR + gpu_vars.role_AUR }}"

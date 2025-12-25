@@ -1,7 +1,7 @@
 ---
 # install_* actions ------------------------------------------------------------
 # [name: str, state: str] ------------------------------------------------------
-role_packages: [nvidia]
+role_packages: [nvidia-open]
 # role_flatpaks: []
 # role_AUR: []
 

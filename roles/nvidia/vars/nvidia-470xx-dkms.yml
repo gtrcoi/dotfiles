@@ -1,0 +1,12 @@
+---
+# install_* actions ------------------------------------------------------------
+# [name: str, state: str] ------------------------------------------------------
+role_packages:
+  - name: nvidia
+    status: absent
+  - name: nvidia-lts
+    status: absent
+  - name: nvidia-dkms
+    state: absent
+
+role_AUR: [nvidia-470xx-dkms]
