@@ -1,8 +1,9 @@
 ---
 # install_* actions ------------------------------------------------------------
 # [name: str, state: str] ------------------------------------------------------
-# role_packages: []
+role_packages: [bc]
 # role_flatpaks: []
+role_AUR: [hello]
 
 # manage_services action -------------------------------------------------------
 # [name: str, enabled: bool, state: str] ---------------------------------------

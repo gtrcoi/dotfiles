@@ -1,0 +1,26 @@
+---
+# test symlink_files_data ------------------------------------------------------
+- name: /tmp/ansible-symlink stat
+  ansible.builtin.stat:
+    path: /tmp/ansible-symlink
+  register: tmp_symlink
+
+- name: Fail if not symlink dir
+  ansible.builtin.fail:
+    msg: "symlink_files_data failed"
+  when: not tmp_symlink.stat.islnk
+
+# test copy_files_data ---------------------------------------------------------
+- name: /tmp/ansible-copy stat
+  ansible.builtin.stat:
+    path: /tmp/ansible-copy/example.txt
+  register: tmp_copy
+
+- name: Fail if not copy contents
+  ansible.builtin.fail:
+    msg: "copy_files_data failed"
+  when: not tmp_copy.stat.exists
+
+# test install_packages --------------------------------------------------------
+# test install_flatpaks --------------------------------------------------------
+# test manage_services ---------------------------------------------------------

@@ -6,3 +6,8 @@
   loop:
     - /tmp/ansible-symlink
     - /tmp/ansible-copy
+
+- name: Remove bc package
+  ansible.builtin.package:
+    name: bc
+    state: absent
