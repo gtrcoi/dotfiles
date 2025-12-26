@@ -1,0 +1,14 @@
+---
+- name: role_name
+  tags: role_name
+  block:
+    - name: Include actions
+      ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
+      loop:
+        - install_packages
+        - install_flatpaks
+        - symlink_files_data
+        - copy_files_data
+        - manage_services
+      loop_control:
+        loop_var: action_name
