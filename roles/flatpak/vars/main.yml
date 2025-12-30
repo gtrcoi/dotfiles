@@ -1,0 +1,26 @@
+---
+# install_* actions ------------------------------------------------------------
+# [name: str, state: str] ------------------------------------------------------
+role_packages:
+  [
+    flatpak,
+    discover,
+    flatpak-kcm,
+    xdg-desktop-portal,
+    xdg-desktop-portal-gtk,
+    xdg-desktop-portal-kde,
+    xdg-desktop-portal-hyprland,
+  ]
+# role_flatpaks: []
+# role_AUR: []
+
+# manage_services action -------------------------------------------------------
+# [name: str, enabled: bool, state: str] ---------------------------------------
+# role_services: []
+
+# *_files_data actions ---------------------------------------------------------
+# Directories must end in trailing slash ---------------------------------------
+# [src: path, dest: path, become: bool] ----------------------------------------
+# files_data:
+#   - src: '{{ role_path }}/files/'
+#   - dest: '{{ ansible_facts["user"] }}/.config/{{ role_name }}/'
