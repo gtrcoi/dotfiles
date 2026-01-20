@@ -2,3 +2,4 @@
 nvim/colors
 **/lazy-lock.json
 **/lazyvim.json
+.qmlls.ini
