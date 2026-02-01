@@ -3,3 +3,4 @@ role_packages:
   - neovom
   - fzf
   - pandoc-cli
+  - fd
