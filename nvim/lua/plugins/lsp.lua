@@ -12,6 +12,7 @@ return {
   opts = {
     servers = {
       yamlls = yamlls_settings,
+      gdscript = {},
     },
   },
 }
