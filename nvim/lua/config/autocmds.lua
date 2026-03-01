@@ -15,3 +15,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
   desc = "Safely inserts '---' marker at the start of a YAML file before saving",
 })
+
+-- -- godot tabs fix with :retab
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "gdscript",
+--   callback = function()
+--     vim.opt_local.expandtab = false -- Use actual tabs, not spaces
+--     vim.opt_local.tabstop = 4 -- Visual width of a tab
+--     vim.opt_local.shiftwidth = 4 -- Size of an indent
+--   end,
+-- })
