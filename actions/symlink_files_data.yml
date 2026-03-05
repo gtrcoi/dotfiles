@@ -1,5 +1,6 @@
 ---
 - name: symlink files_data
+  when: files_data is defined and files_data | length > 0
   block:
     - name: Get stats
       ansible.builtin.stat:
@@ -37,5 +38,3 @@
         state: link
         force: true
       loop: "{{ files_data }}"
-
-  when: files_data is defined and files_data | length > 0
