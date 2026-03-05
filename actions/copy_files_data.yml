@@ -1,5 +1,6 @@
 ---
 - name: copy files_data
+  when: files_data is defined and files_data | length > 0
   block:
     - name: Get stats
       ansible.builtin.stat:
@@ -37,5 +38,3 @@
         mode: "{{ item.mode | default(omit, true) }}"
         force: true
       loop: "{{ files_data | default([]) }}"
-
-  when: files_data is defined and files_data | length > 0
