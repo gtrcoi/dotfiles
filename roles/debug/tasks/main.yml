@@ -1,5 +1,6 @@
 ---
 - name: Setup temporary test environment
+  tags: debug
   block:
     - name: Setup environment
       ansible.builtin.include_tasks: '{{ role_path }}/tasks/setup.yml'

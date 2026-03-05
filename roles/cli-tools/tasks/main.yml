@@ -1,6 +1,6 @@
 ---
-- name: role_name
-  tags: role_name
+- name: cli-tools
+  tags: cli-tools
   block:
     - name: Include actions
       ansible.builtin.include_tasks: '{{ playbook_dir }}/actions/{{ action_name }}.yml'
