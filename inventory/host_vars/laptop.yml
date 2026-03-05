@@ -1,7 +1,35 @@
----
 host_roles:
+  - alacritty
+  - bash
+  - bin
+  - cli-tools
   - common
+  - debug
+  - easyeffects
+  - eww
+  - flatpak
+  - fonts
+  - gaming
+  - git
   - go
+  - HP830
+  - hypr
+  - i3
   - nodejs
+  - nvidia
   - nvim
+  - picom
+  - pipewire
+  - polybar
   - python
+  - quickshell
+  - rofi
+  - ssh
+  - sway
+  - syncthing
+  - udev
+  - vlc
+  - wal
+  - waybar
+  - wofi
+  - X11
