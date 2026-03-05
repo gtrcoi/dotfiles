@@ -26,7 +26,29 @@ def report_errors(func):
 
 
 @report_errors
+def write_task_name(role_path: Path, role_name: str):
+    """
+    Searches for the string 'role_name' in tasks/main.yml and replaces
+    it with the actual role_name provided.
+    """
+    tasks_file = role_path / "tasks" / "main.yml"
+
+    if tasks_file.exists():
+        # Read the file content
+        content = tasks_file.read_text()
+
+        # Replace the placeholder string
+        new_content = content.replace("role_name", role_name)
+
+        # Write back if changes were made
+        if content != new_content:
+            tasks_file.write_text(new_content)
+            print(f"Updated: tasks/main.yml (replaced placeholder with '{role_name}')")
+
+
+@report_errors
 def create_role(role_name: str):
+    """Creates a new Ansible role from the skeleton directory."""
     dest_path = CWD_ROLES_PATH / role_name
 
     if not SKELETON_DIR.exists():
@@ -41,11 +63,13 @@ def create_role(role_name: str):
 
         else:
             if target_file.exists():
-                print(f"  Skipped: {relative_path} (already exists)")
+                print(f"Skipped: {relative_path} (already exists)")
 
             else:
                 shutil.copy(source_file, target_file)
-                print(f"  Created: {relative_path}")
+                print(f"Created: {relative_path}")
+
+    write_task_name(dest_path, role_name)
 
 
 def main():
@@ -57,6 +81,11 @@ def main():
         sys.exit(1)
 
     role_args = sys.argv[1:]
+
+    if not role_args:
+        print("Usage: ./role_creator.py role_name1 [role_name2 ...]")
+        sys.exit(0)
+
     for role_name in role_args:
         create_role(role_name)
 
