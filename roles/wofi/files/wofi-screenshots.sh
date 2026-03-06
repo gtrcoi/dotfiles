@@ -16,11 +16,11 @@ selected=$(
       --define "image-size=250x141" \
       --conf ~/.config/wofi/wallpaper \
       --sort-order=default
-) #--conf=$HOME/.config/wofi/config)
+)
 
 # Optional: Open the selected file with your image viewer (e.g., sxiv, imv, or feh)
 if [ -n "$selected" ]; then
   # Strip the "img:" prefix before opening
   file_path=$(echo "$selected" | sed 's/^img://')
-  xdg-open "$file_path"
+  wl-copy <"$file_path"
 fi
