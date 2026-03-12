@@ -1,0 +1,33 @@
+#!/bin/sh
+
+restore_swww() {
+  if command -v swww >/dev/null; then
+    pgrep -x swww-daemon >/dev/null || swww-daemon >/dev/null 2>&1 &
+    sleep 0.1
+    swww restore
+  fi
+}
+
+restore_nitrogen() {
+  if command -v nitrogen >/dev/null; then
+    nitrogen --restore &
+  fi
+}
+
+restore_feh() {
+  if [ -f "$HOME/.fehbg" ]; then
+    . "$HOME/.fehbg"
+  fi
+}
+
+_display_type=$(loginctl show-session self -p Type | awk -F= '{print $2}')
+_desktop_env=$(printf "%s" "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
+
+case "$_desktop_env" in
+*hyprland*) restore_swww ;;
+*i3*) restore_feh ;;
+*) ;;
+esac
+
+unset _display_type
+unset _desktop_env
