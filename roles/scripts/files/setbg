@@ -1,0 +1,32 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+  printf "Usage: %s /path/to/image\n" "$(basename $0)" >&2
+  exit 1
+fi
+
+_set_swww() {
+  swww img "$1" \
+    --transition-type wipe
+}
+
+_set_nitrogen() {
+  nitrogen --set-zoom-fill "$1" --save
+}
+
+_set_feh() {
+  feh --bg-fill "$1"
+}
+
+# BG_ENGINE set in .config/shell/wallpaper
+case "$BG_ENGINE" in
+
+swww) _set_swww "$1" ;;
+nitrogen) _set_nitrogen "$1" ;;
+feh) _set_feh "$1" ;;
+
+*)
+  printf "Error: BG_ENGINE not set or unsupported (%s)\n" "$BG_ENGINE" >&2
+  exit 1
+  ;;
+esac
