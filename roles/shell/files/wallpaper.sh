@@ -5,6 +5,7 @@ _restore_swww() {
     pgrep -x swww-daemon >/dev/null || swww-daemon >/dev/null 2>&1 &
     sleep 0.1
     swww restore
+    echo "hyprland detected"
     export BG_ENGINE="swww"
   fi
 }
@@ -23,14 +24,21 @@ _restore_feh() {
   fi
 }
 
-_display_type=$(loginctl show-session self -p Type | awk -F= '{print $2}')
-_desktop_env=$(printf "%s" "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
+main() {
+  _desktop_env=$(printf "%s" "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
 
-case "$_desktop_env" in
-*hyprland*) _restore_swww ;;
-*i3*) _restore_feh ;;
-*) ;;
-esac
+  case "$_desktop_env" in
+  *hyprland*) _restore_swww ;;
+  *i3*) _restore_feh ;;
+  *) ;;
+  esac
 
-unset _display_type
-unset _desktop_env
+  unset _desktop_env
+
+  # Push BG_ENGINE to the session-wide environment
+  if [ -n "$BG_ENGINE" ]; then
+    dbus-update-activation-environment --systemd BG_ENGINE
+  fi
+}
+
+main "$@"
