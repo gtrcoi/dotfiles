@@ -1,0 +1,5 @@
+[ -f "$XDG_CONFIG_HOME/shell/profile.sh" ] && . "$XDG_CONFIG_HOME/shell/profile.sh"
+
+if [ -n "$BASH_VERSION" ] && [ -f "$HOME/.bashrc" ]; then
+  . "$HOME/.bashrc"
+fi
