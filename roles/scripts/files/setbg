@@ -18,8 +18,9 @@ _set_feh() {
   feh --bg-fill "$1"
 }
 
-# BG_ENGINE set in .config/shell/wallpaper
-case "$BG_ENGINE" in
+# BG_ENGINE global set in .config/shell/wallpaper.sh
+_bg_engine=$(systemctl --user show-environment | grep '^BG_ENGINE=' | cut -d= -f2)
+case "$_bg_engine" in
 
 swww) _set_swww "$1" ;;
 nitrogen) _set_nitrogen "$1" ;;
