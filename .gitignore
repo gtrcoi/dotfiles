@@ -4,3 +4,4 @@ nvim/colors
 **/lazyvim.json
 .qmlls.ini
 **/*.spl
+roles/vlc/files/vlc-qt-interface.conf
