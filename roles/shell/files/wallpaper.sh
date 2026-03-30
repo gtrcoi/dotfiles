@@ -1,12 +1,12 @@
 #!/bin/sh
 
-_restore_swww() {
-  if command -v swww >/dev/null; then
-    pgrep -x swww-daemon >/dev/null || swww-daemon >/dev/null 2>&1 &
+_restore_awww() {
+  if command -v awww >/dev/null; then
+    pgrep -x awww-daemon >/dev/null || awww-daemon >/dev/null 2>&1 &
     sleep 0.1
-    swww restore
+    awww restore
     echo "hyprland detected"
-    export BG_ENGINE="swww"
+    export BG_ENGINE="awww"
   fi
 }
 
@@ -28,7 +28,7 @@ main() {
   _desktop_env=$(printf "%s" "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
 
   case "$_desktop_env" in
-  *hyprland*) _restore_swww ;;
+  *hyprland*) _restore_awww ;;
   *i3*) _restore_feh ;;
   *) ;;
   esac

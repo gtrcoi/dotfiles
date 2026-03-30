@@ -1,7 +1,7 @@
 ---
 # install_* actions ------------------------------------------------------------
 # [name: str, state: str] ------------------------------------------------------
-role_packages: [hyprshot, swww]
+role_packages: [hyprshot, awww]
 # role_flatpaks: []
 # role_AUR: []
 
