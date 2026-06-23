@@ -5,3 +5,4 @@ nvim/colors
 .qmlls.ini
 **/*.spl
 roles/vlc/files/vlc-qt-interface.conf
+.venv/
